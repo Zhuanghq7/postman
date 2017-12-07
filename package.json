@@ -1,0 +1,10 @@
+{
+  "name": "power_point",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "1.4.3",
+    "ejs": "0.4.2",
+    "express": "2.5.9",
+    "request": "^2.83.0"
+  }
+}

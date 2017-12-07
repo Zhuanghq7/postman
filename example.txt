@@ -1,0 +1,25 @@
+PUT sd-be5b-76ab:9200/postman?pretty 
+//this will create an new index in elasticsearch//
+PUT sd-be5b-76ab:9200/postman/doc/1?pretty
+{
+"name":"John Doe"
+}
+//this will put an new doc into elasticsearch//
+GET sd-be5b-76ab:9200/postman/_search
+{
+    "query": {
+        "match_all": {}
+    }
+}
+//this will display all the doc//
+DELETE sd-be5b-76ab:9200/postman?pretty 
+//this will delete the index named "postman"//
+GET sd-be5b-76ab:9200/_search
+{
+    "query":{
+        "match":{
+            "name":"Wang"  
+        }
+    }
+}
+//get the result whos name contains "Wang"//

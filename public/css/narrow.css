@@ -1,0 +1,51 @@
+.example{
+    width:70%;
+    margin:auto;
+    background: #75878C
+}
+.main{
+    width:100%;
+    margin-top: 30px;
+}
+.major_div {
+    width: 67%;
+    margin: auto;
+    text-align: center;
+    color:whitesmoke;
+    background: #5c6669;
+    padding:10px;
+}
+
+body {
+    margin-top: 20px;
+    background: #aec0c5;
+}
+
+.meth {
+    float: left;
+    height: 18px;
+    margin: 0px 0px 5px 0px;
+}
+
+.selecter {
+    float: left;
+    margin: 0px 0px 5px 0px;
+}
+
+.result_div {
+    width: 70%;
+    height: 400px;
+    margin: 15px auto;
+    border: 3px dashed rgb(124, 120, 120);
+    background: white;
+}
+
+.input {
+    width: 98%;
+    height:222px;
+    background: white
+}
+
+.textarea { 
+    overflow-x: scroll;
+}

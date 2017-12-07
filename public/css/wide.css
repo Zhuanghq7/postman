@@ -1,0 +1,144 @@
+@media screen and (min-width:800px) {
+    .forexample {
+        width: 30%;
+        float: left;
+    }
+    
+    .example {
+        width: 200px;
+        float: right;
+    }
+    .main {
+        width: 70%;
+        float: left
+    }
+    .major_div {
+        color: whitesmoke;
+        width: 536px; 
+        /* margin: auto; */
+        margin-left: 50px;
+        text-align: center;
+        padding-top:10px;
+        padding-bottom: 10px;
+        background: #5c6669
+    }
+    body {
+        margin-top: 100px;
+        background: #aec0c5;
+    }
+    .selecter {
+        float: left;
+        margin: 0px 0px 5px 0px;
+    }
+    .result_div {
+        width: 536px;
+        height: 400px;
+        margin-top: 30px;
+        margin-left: 50px;
+        border: 3px dashed rgb(124, 120, 120);
+        background: white;
+    }
+    .input {
+        width: 100%;
+        padding:0px;
+        border:0px;
+        height: 222px;
+        background: white
+    }
+    .textarea {
+        width: 551px;
+        height: 390px;
+        overflow-x: scroll;
+    }
+    .div_2{
+        border:0px;
+        padding:0px;
+    }
+    button{
+        border:0px;
+    }
+}
+
+
+/* narrow */
+
+@media screen and (max-width:800px) {
+    .example {
+        width: 70%;
+        margin: auto;
+    }
+    .main {
+        width: 100%;
+        margin-top: 30px;
+    }
+    .major_div {
+        width: 67%;
+        margin: auto;
+        text-align: center;
+        color: whitesmoke;
+        background: #5c6669;
+        /* background: black; */
+        padding: 10px;
+    }
+    body {
+        margin-top: 20px;
+        background: #aec0c5;
+    }
+    .selecter {
+        float: left;
+        margin: 0px 0px 5px 0px;
+    }
+    .result_div {
+        width: 70%;
+        height: 400px;
+        margin: 15px auto;
+        border: 3px dashed rgb(124, 120, 120);
+        background: white;
+    }
+    .input {
+        width: 98%;
+        height: 222px;
+        background: white
+    }
+    .textarea {
+        overflow-x: scroll;
+    }
+}
+
+.example {
+    background: #75878C
+}
+
+
+.meth {
+    float: left;
+    height: 18px;
+    margin: 0px 0px 5px 0px;
+}
+.exampleS{
+    font-size:13px;
+    font-family: 'Lucida Console','Monospace';
+    
+    white-space: pre-wrap;
+    color:white;
+    margin:1px;
+}
+.exampleD{
+    color: rgb(35, 52, 83);
+    font-weight:bolder;
+    font-size:15px;
+    margin: 1px;
+}
+.example{
+    padding:10px;
+    border: 3px solid #797f8f
+}
+.exampleT{
+    font-weight:bolder;
+    color:wheat;
+    margin:0px;
+}
+.circleBase {
+    border-radius: 1%;
+    border: 2px solid #dff6fc
+}

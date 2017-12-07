@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <title>Post Man</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/wide.css" type="text/css" />
+</head>
+
+<body>
+    <div class="forexample">
+        <div class="example">
+            <% for(var i=0;i<exampleS.length-1;i++) {%>
+                <p><p class="exampleT">Example <%= i+1%>:</p></br>
+                <p class="exampleS"><%= exampleS[i] %></p>
+                <p class="exampleD"><%= exampleD[i] %></p>
+                </p>
+            <% } %>
+        </div>
+    </div>
+    <div class="main">
+        <div class="major_div circleBase ">
+            <form action="/" method="POST">
+                <div class="div_1">
+                    <p class="meth">METH:</p>
+                    <div class="selecter">
+                        <label>
+                            <% if(meth==="get"){ %>
+                                <input name="meth" type="radio" value="get" checked="true" />get</label>
+                        <% }else{ %>
+                            <input name="meth" type="radio" value="get" />get</label>
+                            <% } %>
+                                <label>
+                                    <% if(meth==="put"){ %>
+                                        <input name="meth" type="radio" value="put" checked="true" />put
+                                </label>
+                                <% }else{ %>
+                                    <input name="meth" type="radio" value="put" />put
+                                    </label>
+                                    <% } %>
+                                        <label>
+                                            <% if(meth==="delete"){ %>
+                                                <input name="meth" type="radio" value="delete" checked="true" />delete
+                                        </label>
+                                        <% }else{ %>
+                                            <input name="meth" type="radio" value="delete" />delete
+                                            </label>
+                                            <% } %>
+                                            <label>
+                                                    <% if(meth==="post"){ %>
+                                                        <input name="meth" type="radio" value="post" checked="true" />post
+                                                </label>
+                                                <% }else{ %>
+                                                    <input name="meth" type="radio" value="post" />post
+                                                    </label>
+                                                    <% } %>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <textarea type="text" wrap="hard" required cols="30" name="q" class="input" onkeydown="tab(this)"><%= url %></textarea>
+                    <script>
+                        function tab(obj) {
+                            if (event.keyCode == 9) {
+                                event.preventDefault();
+                                var s = obj.selectionStart;
+                                obj.value = obj.value.substring(0, obj.selectionStart) + "    " + obj.value.substring(
+                                    obj.selectionEnd);
+                                obj.selectionEnd = s + 4;
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="div_2">
+                    <button>DONE</button>
+                </div>
+        </div>
+        </form>
+        <div class="result_div textarea">
+            <pre stype="margin:0px;"><%= result %></pre>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
