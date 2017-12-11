@@ -89,16 +89,16 @@
 
                         };
                         function focustext(obj,str){
-                            if(obj.innerHTML === str){
-                                obj.innerHTML = "" ;
+                            if(obj.value === str){
+                                obj.value = "" ;
                             }
                             obj.style.color="black";
                         }
                         function focusouttext(obj,str){
-                            if(obj.innerHTML===""){
-                                obj.innerHTML=str;
+                            if(obj.value===""){
+                                obj.value=str;
+                                obj.style.color = "darkgrey"
                             }
-                            obj.style.color = "darkgrey"
                         }
                         function pressSend(obj,str){
                             //event.preventDefault();

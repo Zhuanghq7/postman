@@ -5,6 +5,8 @@
     "body-parser": "1.4.3",
     "ejs": "0.4.2",
     "express": "2.5.9",
-    "request": "^2.83.0"
+    "request": "^2.3.0",
+    "colors":"1.1.2",
+    "request-promise":"4.2.2"
   }
 }

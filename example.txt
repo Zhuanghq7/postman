@@ -14,8 +14,6 @@ GET sd-be5b-76ab:9200/postman/_search
     }
 }
 //this will display all the doc//
-DELETE sd-be5b-76ab:9200/postman?pretty 
-//this will delete the index named "postman"//
 GET sd-be5b-76ab:9200/_search
 {
     "query":{
@@ -25,3 +23,5 @@ GET sd-be5b-76ab:9200/_search
     }
 }
 //get the result whos name contains "Wang"//
+DELETE sd-be5b-76ab:9200/postman?pretty 
+//this will delete the index named "postman"//
