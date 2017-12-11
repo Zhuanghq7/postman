@@ -39,7 +39,8 @@ console.log("examples readed".green);
 app.get('/', function (req, res) {
     res.render('index', {
         url: "",
-        meth: "",
+        b:"",
+        meth: "get",
         result: "",
         exampleS:exampleSen,
         exampleD:exampleDoc
@@ -49,9 +50,10 @@ var count = 0;
 /* post func */
 app.post('/', function (req, res) {
     console.log('We have an new come! count:' + (++count));
-    var body = postman(req.body.meth, req.body.q, function (RES) {
+    var body = postman(req.body.meth, req.body.q,req.body.b,req.body.json, function (RES) {
         res.render('index', {
             url: req.body.q,
+            b:req.body.b,
             meth: req.body.meth,
             result: RES,
             exampleS:exampleSen,

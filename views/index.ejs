@@ -12,52 +12,60 @@
     <div class="forexample">
         <div class="example">
             <% for(var i=0;i<exampleS.length-1;i++) {%>
-                <p><p class="exampleT">Example <%= i+1%>:</p></br>
-                <p class="exampleS"><%= exampleS[i] %></p>
-                <p class="exampleD"><%= exampleD[i] %></p>
+                <p>
+                    <p class="exampleT">Example <%= i+1%>:</p>
+                    </br>
+                    <p class="exampleS"><%= exampleS[i] %></p>
+                    <p class="exampleD"><%= exampleD[i] %></p>
                 </p>
-            <% } %>
+                <% } %>
         </div>
     </div>
     <div class="main">
+        <div class="total">
         <div class="major_div circleBase ">
-            <form action="/" method="POST">
+            <form id="myform" action="/" method="POST">
                 <div class="div_1">
-                    <p class="meth">METH:</p>
                     <div class="selecter">
-                        <label>
-                            <% if(meth==="get"){ %>
-                                <input name="meth" type="radio" value="get" checked="true" />get</label>
-                        <% }else{ %>
-                            <input name="meth" type="radio" value="get" />get</label>
-                            <% } %>
-                                <label>
+                        <% if(meth==="get"){ %>
+                            <button name="get" type="button" onclick="cclick(this)" class="button sb"/>GET</button>
+                            <% }else{ %>
+                                <button name="get" type="button" onclick="cclick(this)" class="button usb"/>GET</button>
+                                <% } %>
                                     <% if(meth==="put"){ %>
-                                        <input name="meth" type="radio" value="put" checked="true" />put
-                                </label>
-                                <% }else{ %>
-                                    <input name="meth" type="radio" value="put" />put
-                                    </label>
-                                    <% } %>
-                                        <label>
-                                            <% if(meth==="delete"){ %>
-                                                <input name="meth" type="radio" value="delete" checked="true" />delete
-                                        </label>
+                                        <button name="put" type="radio" onclick="cclick(this)" class="button sb"/>PUT
                                         <% }else{ %>
-                                            <input name="meth" type="radio" value="delete" />delete
-                                            </label>
+                                            <button name="put" type="radio" onclick="cclick(this)" class="button usb"/>PUT
                                             <% } %>
-                                            <label>
-                                                    <% if(meth==="post"){ %>
-                                                        <input name="meth" type="radio" value="post" checked="true" />post
-                                                </label>
-                                                <% }else{ %>
-                                                    <input name="meth" type="radio" value="post" />post
-                                                    </label>
-                                                    <% } %>
+                                                <% if(meth==="delete"){ %>
+                                                    <button name="delete" type="radio" onclick="cclick(this)" class="button sb"/>DELETE
+                                                    <% }else{ %>
+                                                        <button name="delete" type="radio"  onclick="cclick(this)" class="button usb"/>DELETE
+                                                        <% } %>
+                                                            <% if(meth==="post"){ %>
+                                                                <button name="post" type="radio"  onclick="cclick(this)" class="button sb"/>POST
+                                                                <% }else{ %>
+                                                                    <button name="post" type="radio" onclick="cclick(this)" class="button usb"/>POST
+                                                                    <% } %>
                     </div>
-                    <div style="clear:both;"></div>
-                    <textarea type="text" wrap="hard" required cols="30" name="q" class="input" onkeydown="tab(this)"><%= url %></textarea>
+                    <textarea id="meth" name="meth" style="visibility:hidden;height:0px;width:0px;margin:0px;padding:0px;border:0px;display:block;"></textarea>
+                    <textarea id="json" name="json" style="visibility:hidden;height:0px;width:0px;margin:0px;padding:0px;border:0px;display:block;"></textarea>                    
+                    <script>
+                        document.getElementById("meth").value = "<%= meth %>";
+                    </script>
+                    <div style="clear:both;width:0px;height:0px"></div>
+                    <div class="forinputdiv">
+                        <% if(url){ %>
+                        <textarea id="uri" type="text" wrap="hard"  required cols="30" raws="1" name="q" class="input" onkeydown="tab(this)" onfocus='focustext(this,"URI")' onfocusout="focusouttext(this,'URI')"><%= url %></textarea>
+                        <% }else{ %>
+                        <textarea id="uri" type="text" wrap="hard" placeholder="URI" required cols="30" raws="1" name="q" class="input" onkeydown="tab(this)" onfocus='focustext(this,"URI")' onfocusout="focusouttext(this,'URI')" style="color:darkgrey">URI</textarea>
+                        <% } %>
+                        <% if(b){ %>
+                        <textarea id="body" type="text" wrap="hard" cols="30" name="b" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Body")' onfocusout="focusouttext(this,'Body')"><%= b %></textarea>
+                        <% }else{ %>
+                        <textarea id="body" type="text" wrap="hard" placeholder="Body" cols="30" name="b" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Body")' onfocusout="focusouttext(this,'Body')" style="color:darkgrey">Body</textarea>
+                        <% } %>
+                    </div>
                     <script>
                         function tab(obj) {
                             if (event.keyCode == 9) {
@@ -67,17 +75,63 @@
                                     obj.selectionEnd);
                                 obj.selectionEnd = s + 4;
                             }
+                        };
+                        function cclick(obj){
+                            event.preventDefault();
+                            document.getElementById("meth").value = obj.name;
+                            var selected = document.getElementsByClassName('sb');
+                            for(var button=0 ;button < selected.length;button++){
+                                selected[button].classList.add('usb');
+                                selected[button].classList.remove('sb');
+                            }
+                            obj.classList.add('sb');
+                            obj.classList.remove('usb');
+
+                        };
+                        function focustext(obj,str){
+                            if(obj.innerHTML === str){
+                                obj.innerHTML = "" ;
+                            }
+                            obj.style.color="black";
+                        }
+                        function focusouttext(obj,str){
+                            if(obj.innerHTML===""){
+                                obj.innerHTML=str;
+                            }
+                            obj.style.color = "darkgrey"
+                        }
+                        function pressSend(obj,str){
+                            //event.preventDefault();
+                            var uri = document.getElementById("uri");
+                            var body = document.getElementById("body");
+                            var jsonn = document.getElementById("json");
+                            jsonn.value = str;
+                            if(uri.value==="URI"){
+                                // alert('PLEASE INPUT URI!');
+                                uri.value="";
+                            }else{
+                                if(body.value==="Body"){
+                                    body.value="";
+                                }
+                                // document.getElementById("myform").submit();
+                            }
                         }
                     </script>
                 </div>
                 <div class="div_2">
-                    <button>DONE</button>
+                    <button class="done buttonD" onclick="pressSend(this,'false')"><span>SEND</span></button>
+                    <button class="done buttonDJ" onclick="pressSend(this,'true')"><span>SEND JSON</span></button>
                 </div>
         </div>
         </form>
-        <div class="result_div textarea">
-            <pre stype="margin:0px;"><%= result %></pre>
+        <div class="result_div textarea major_div">
+            <% if(result){ %>
+            <pre class="return" style="margin:0px;"><%= result %></pre>
+            <% }else{ %>
+            <pre class="return" style="color:white;margin:0px;font-size:20px"><span>RETURN</span></pre>  
+            <% } %>
         </div>
+    </div> 
     </div>
     </div>
 </body>

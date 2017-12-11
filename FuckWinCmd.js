@@ -2,20 +2,24 @@ var rp = require('request-promise');
 var color = require('colors');
 module.exports = postman;
 
-function postman(meth, url, callback) {
+function postman(meth, url, body, isjson, callback) {
     url = parseURL(url);
-    var parsed = parsePost(url);
-    var urii = parsed[0];
-    var postbody = parsed[1];
+    //var parsed = parsePost(url);
+    var urii = url;
+    var postbody = body;
+    var judgejson = (isjson === "true");
     console.log("uri is ".green + urii);
     console.log("body is ".green + postbody);
+    console.log("meth is ".green + meth);
+    console.log("isjson ".green + isjson);
     var options_post;
-    if (postbody) {
+
+    if (judgejson) {
         options_post = {
             uri: urii,
             json: true,
             method: meth,
-            body: JSON.parse(postbody),
+            body: postbody?JSON.parse(postbody):"",
             headers: {
                 "Content-Type": "application/json"
             }
@@ -23,19 +27,24 @@ function postman(meth, url, callback) {
     } else {
         options_post = {
             uri: urii,
-            json: true,
             method: meth,
-            body: postbody,
-            headers: {
-                "Content-Type": "application/json"
-            }
+            body: postbody
         };
     }
+
     rp(options_post).then(function (body) {
-        callback(JSON.stringify(body, null, 4));
+        if (judgejson) {
+            callback(JSON.stringify(body, null, 4));
+        } else {
+            callback(body);
+        }
     }).catch(function (err) {
         console.log(err);
-        callback(JSON.stringify(err, null, 4));
+        if (judgejson) {
+            callback(JSON.stringify(err, null, 4));
+        } else {
+            callback(body);
+        }
     });
 
 }
@@ -53,11 +62,11 @@ function parsePost(url) {
 
 
 function parseURL(URL) {
-    if(!String.prototype.trim) {  
-        String.prototype.trim = function () {  
-          return this.replace(/^\s+|\s+$/g,'');  
-        };  
-      } 
+    if (!String.prototype.trim) {
+        String.prototype.trim = function () {
+            return this.replace(/^\s+|\s+$/g, '');
+        };
+    }
     URL = URL.trim();
     if (URL.substring(0, 7) !== 'http://') {
         URL = 'http://' + URL;

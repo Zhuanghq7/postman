@@ -1,3 +1,5 @@
+GET sd-be5b-76ab:9200/_cat/indices?v
+//show the status of indices//
 PUT sd-be5b-76ab:9200/postman?pretty 
 //this will create an new index in elasticsearch//
 PUT sd-be5b-76ab:9200/postman/doc/1?pretty
