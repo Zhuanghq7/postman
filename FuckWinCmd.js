@@ -2,7 +2,7 @@ var rp = require('request-promise');
 var color = require('colors');
 module.exports = postman;
 
-function postman(meth, url, body, isjson, callback) {
+function postman(meth, url, body, isjson, callback,header) {
     url = parseURL(url);
     //var parsed = parsePost(url);
     var urii = url;
@@ -12,23 +12,26 @@ function postman(meth, url, body, isjson, callback) {
     console.log("body is ".green + postbody);
     console.log("meth is ".green + meth);
     console.log("isjson ".green + isjson);
+    console.log("header is".green+header);
     var options_post;
+    var Header = header?JSON.parse(header):"";
+    
 
     if (judgejson) {
+        // Header["Content-Type"] = "application/json";
         options_post = {
             uri: urii,
             json: true,
             method: meth,
             body: postbody?JSON.parse(postbody):"",
-            headers: {
-                "Content-Type": "application/json"
-            }
+            headers: Header
         };
     } else {
         options_post = {
             uri: urii,
             method: meth,
-            body: postbody
+            body: postbody,
+            headers:Header
         };
     }
 

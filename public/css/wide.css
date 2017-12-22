@@ -127,7 +127,6 @@ body {
 
 .input_body {
     height: 192px;
-    width: 98%;
     font-size: 20px;
     background: white;
     padding-top: 1%;
@@ -138,7 +137,7 @@ body {
     margin: 0px;
     transition: all 0.5s;
     display:block;
-
+    flex:1;
 }
 .input:hover{
     position: relative;

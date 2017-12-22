@@ -56,15 +56,22 @@
                     <div style="clear:both;width:0px;height:0px"></div>
                     <div class="forinputdiv">
                         <% if(url){ %>
-                        <textarea id="uri" type="text" wrap="hard"  required cols="30" raws="1" name="q" class="input" onkeydown="tab(this)" onfocus='focustext(this,"URI")' onfocusout="focusouttext(this,'URI')"><%= url %></textarea>
+                        <textarea id="uri" type="text" wrap="hard"  placeholder="URI" required cols="30" raws="1" name="q" class="input" onkeydown="tab(this)" onfocus='focustext(this,"URI")' onfocusout="focusouttext(this,'URI')"><%= url %></textarea>
                         <% }else{ %>
-                        <textarea id="uri" type="text" wrap="hard" placeholder="URI" required cols="30" raws="1" name="q" class="input" onkeydown="tab(this)" onfocus='focustext(this,"URI")' onfocusout="focusouttext(this,'URI')" style="color:darkgrey">URI</textarea>
+                        <textarea id="uri" type="text" wrap="hard" placeholder="URI" required cols="30" raws="1" name="q" class="input" onkeydown="tab(this)" onfocus='focustext(this,"URI")' onfocusout="focusouttext(this,'URI')" style="color:darkgrey"></textarea>
                         <% } %>
+                        <div style="display:flex">
                         <% if(b){ %>
-                        <textarea id="body" type="text" wrap="hard" cols="30" name="b" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Body")' onfocusout="focusouttext(this,'Body')"><%= b %></textarea>
+                        <textarea id="body" type="text" wrap="hard" cols="30"  placeholder="Body" name="b" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Body")' onfocusout="focusouttext(this,'Body')"><%= b %></textarea>
                         <% }else{ %>
-                        <textarea id="body" type="text" wrap="hard" placeholder="Body" cols="30" name="b" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Body")' onfocusout="focusouttext(this,'Body')" style="color:darkgrey">Body</textarea>
+                        <textarea id="body" type="text" wrap="hard" placeholder="Body" cols="30" name="b" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Body")' onfocusout="focusouttext(this,'Body')" style="color:darkgrey"></textarea>
                         <% } %>
+                        <% if(h){ %>
+                        <textarea id="header" type="text" wrap="hard" cols="30" placeholder="Header" name="header" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Header")' onfocusout="focusouttext(this,'Header')"><%= h %></textarea>
+                        <% }else{ %>
+                        <textarea id="header" type="text" wrap="hard" placeholder="Header" cols="30" name="header" class="input_body" onkeydown="tab(this)"  onfocus='focustext(this,"Header")' onfocusout="focusouttext(this,'Header')" style="color:darkgrey"></textarea>
+                        <% } %>
+                        </div>
                     </div>
                     <script>
                         function tab(obj) {
@@ -96,7 +103,6 @@
                         }
                         function focusouttext(obj,str){
                             if(obj.value===""){
-                                obj.value=str;
                                 obj.style.color = "darkgrey"
                             }
                         }
@@ -105,6 +111,7 @@
                             var uri = document.getElementById("uri");
                             var body = document.getElementById("body");
                             var jsonn = document.getElementById("json");
+                            var header = document.getElementById("header");
                             jsonn.value = str;
                             if(uri.value==="URI"){
                                 // alert('PLEASE INPUT URI!');
@@ -112,6 +119,9 @@
                             }else{
                                 if(body.value==="Body"){
                                     body.value="";
+                                }
+                                if(header.value ==="Header"){
+                                    header.value = "";
                                 }
                                 // document.getElementById("myform").submit();
                             }

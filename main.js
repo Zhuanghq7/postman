@@ -35,21 +35,22 @@ for (var temp in examples) {
 console.log(exampleSen);
 console.log(exampleDoc);
 console.log("examples readed".green);
+var count = 0;
 /* get func */
 app.get('/', function (req, res) {
+    console.log('We have an new come! count:' + (++count));
     res.render('index', {
         url: "",
         b:"",
         meth: "get",
         result: "",
         exampleS:exampleSen,
-        exampleD:exampleDoc
+        exampleD:exampleDoc,
+        h:""
     });
 })
-var count = 0;
 /* post func */
 app.post('/', function (req, res) {
-    console.log('We have an new come! count:' + (++count));
     var body = postman(req.body.meth, req.body.q,req.body.b,req.body.json, function (RES) {
         res.render('index', {
             url: req.body.q,
@@ -57,9 +58,10 @@ app.post('/', function (req, res) {
             meth: req.body.meth,
             result: RES,
             exampleS:exampleSen,
-            exampleD:exampleDoc
+            exampleD:exampleDoc,
+            h:req.body.header
         })
-    });
+    },req.body.header);
 })
 
 /* start server */
